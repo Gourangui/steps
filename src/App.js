@@ -35,18 +35,28 @@ function App() {
             <div className={step >= 3 ? "active" : ""}>3</div>
           </div>
 
-          <p className='message'>
-            Step {step}: {messages[step - 1]}
-          </p>
+          <StepMessage step={step}>{messages[step - 1]}</StepMessage>
 
           <div className='buttons'>
-            <button onClick={handlePrevious}>Prev</button>
-            <button onClick={handleNext}>Next</button>
+            <Button onClick={handlePrevious}>Previous</Button>
+            <Button onClick={handleNext}>Next</Button>
           </div>
       </main>
       )}
     </>
   );
+}
+
+function StepMessage({step, children}){
+  return (
+    <p className='message'>
+      Step {step}: {children}
+    </p>
+  )
+}
+
+function Button({onClick, children}) {
+  return <button onClick={onClick}>{children}</button>
 }
 
 export default App;
